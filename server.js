@@ -113,8 +113,13 @@ var SampleApp = function() {
      */
     self.initializeServer = function() {
         self.createRoutes();
-        self.app = express.createServer();
+        self.app = express();
 
+        // Add static folders for css, images, and js files
+        ['css', 'img', 'js', 'font-awesome/css/'].forEach(function (dir){
+            self.app.use('/'+dir, express.static(__dirname+'/'+dir));
+        });
+    
         //  Add handlers for the app (from the routes).
         for (var r in self.routes) {
             self.app.get(r, self.routes[r]);
