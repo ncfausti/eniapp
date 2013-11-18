@@ -116,7 +116,7 @@ var SampleApp = function() {
         self.app = express();
 
         // Add static folders for css, images, and js files
-        ['css', 'img', 'js', 'font-awesome/css/'].forEach(function (dir){
+        ['css', 'img', 'js', 'font-awesome/css'].forEach(function (dir){
             self.app.use('/'+dir, express.static(__dirname+'/'+dir));
         });
     
